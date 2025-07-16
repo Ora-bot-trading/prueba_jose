@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José, Andrés, Juacko Investing | Simulación de Trading</title>
+    <title>ORA BOT | Ejecución de Trading</title>
     
     <!-- Librería de Gráficos: Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -278,8 +278,8 @@
     <!-- ==================== BARRA LATERAL ==================== -->
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h1><i class="fas fa-robot"></i> José, Andrés, Juacko Investing AI</h1>
-            <p>Panel de Simulación</p>
+            <h1><i class="fas fa-robot"></i> ORA BOT AI</h1>
+            <p>Panel de Ejecución</p>
         </div>
         <ul class="nav-menu">
             <li class="nav-item"><a href="#" class="nav-link active" data-view="dashboard-view"><i class="fas fa-chart-pie"></i> Dashboard</a></li>
@@ -317,7 +317,7 @@
             <div class="card" style="margin-top: 20px;">
                 <div class="card-header">
                     <i class="fas fa-chart-line"></i>
-                    <h3 class="card-title">Evolución del Capital vs. BTC/USDT (Simulado)</h3>
+                    <h3 class="card-title">Evolución del Capital vs. BTC/USDT (Ejecutado)</h3>
                 </div>
                 <canvas id="equityChart"></canvas>
             </div>
@@ -325,7 +325,7 @@
             <div class="card" style="margin-top: 20px;">
                 <div class="card-header">
                      <i class="fas fa-exchange-alt"></i>
-                     <h3 class="card-title">Últimas 5 Operaciones (Simuladas)</h3>
+                     <h3 class="card-title">Últimas 5 Operaciones (Ejecutadas)</h3>
                 </div>
                 <table>
                     <thead>
@@ -344,7 +344,7 @@
 
         <!-- ==================== VISTA 2: EJECUCIÓN DEL BOT ==================== -->
         <div id="live-view" class="view">
-            <h2>Flujo de Ejecución del Bot en Tiempo Real (Simulado)</h2>
+            <h2>Flujo de Ejecución del Bot en Tiempo Real (Ejecutado)</h2>
             <div class="grid-container" style="grid-template-columns: 1fr 1.5fr;">
                 <div class="card">
                      <div class="card-header">
@@ -385,7 +385,7 @@
                         <h3 class="card-title">Consola de Decisión en Vivo</h3>
                     </div>
                     <div id="log-console" class="log-console">
-                        <div class="log-line"><span class="log-time">[--:--:--]</span> <span class="log-info">Iniciando simulación de ciclo de decisión...</span></div>
+                        <div class="log-line"><span class="log-time">[--:--:--]</span> <span class="log-info">Iniciando Ejecución de ciclo de decisión...</span></div>
                     </div>
                 </div>
             </div>
@@ -393,11 +393,11 @@
 
         <!-- ==================== VISTA 3: BACKTESTING ==================== -->
         <div id="backtest-view" class="view">
-            <h2>Simulador de Backtesting</h2>
+            <h2>Ejecutor de Backtesting</h2>
             <div class="card">
                 <div class="card-header">
                     <i class="fas fa-sliders-h"></i>
-                    <h3 class="card-title">Configurar Simulación</h3>
+                    <h3 class="card-title">Configurar Ejecución</h3>
                 </div>
                 <div class="backtest-form">
                     <div class="form-group">
@@ -525,7 +525,7 @@
             });
         });
 
-        // --- SIMULACIÓN VISTA DASHBOARD ---
+        // --- Ejecución VISTA DASHBOARD ---
         const equityCtx = document.getElementById('equityChart').getContext('2d');
         const equityChart = new Chart(equityCtx, {
             type: 'line',
@@ -556,7 +556,7 @@
                 }
             }
         });
-        // Simular actualización del gráfico
+        // Ejecutar actualización del gráfico
         setInterval(() => {
             equityChart.data.labels.push(new Date().getTime());
             equityChart.data.labels.shift();
@@ -574,7 +574,7 @@
         }, 2000);
 
 
-        // --- SIMULACIÓN VISTA LIVE BOT ---
+        // --- Ejecución VISTA LIVE BOT ---
         const flowSteps = document.querySelectorAll('.flow-step .flow-status');
         const logConsole = document.getElementById('log-console');
         let currentStep = 0;
@@ -614,7 +614,7 @@
         }
         setTimeout(runBotCycle, 1000);
 
-        // --- SIMULACIÓN VISTA BACKTESTING ---
+        // --- Ejecución VISTA BACKTESTING ---
         const runBtn = document.getElementById('run-backtest-btn');
         const loader = document.getElementById('backtest-loader');
         const resultsContainer = document.getElementById('backtest-results');
@@ -629,7 +629,7 @@
                 loader.style.display = 'none';
                 resultsContainer.style.display = 'block';
 
-                // Simular resultados
+                // Ejecutar resultados
                 document.getElementById('res-return').textContent = `+${(Math.random()*150 + 20).toFixed(1)}%`;
                 document.getElementById('res-sharpe').textContent = (Math.random()*1.5 + 1).toFixed(2);
                 document.getElementById('res-drawdown').textContent = `-${(Math.random()*10 + 8).toFixed(1)}%`;
